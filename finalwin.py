@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QApplication, QWidget, QLabel, QPushButton, QBoxLayout,
+from PyQt5.QtCore import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout,QHBoxLayout,QGroupBox,QRadioButton,QListWidget,QLineEdit
 class final_win(QWidget)
     def __init__(self):
         super(). __init__()
