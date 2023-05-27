@@ -1,4 +1,7 @@
-from PyQt5.QtCore import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout,QHBoxLayout,QGroupBox,QRadioButton,QListWidget,QLineEdit
+from PyQt5.QtCore import QApplication, QWidget, QLabel, QPushButton, QBoxLayout,QHBoxLayout,QGroupBox,QRadioButton,QListWidget,QLineEdit, QTimer, QTime, QLocal, QFont
+from instr import*
+from final_win import*
+
 class Experiment():
     def __init__(self, age,  test1, test2, test3):
         self.age = age
@@ -6,7 +9,7 @@ class Experiment():
         self.t2 = test2
         self.t3 = test3 
 
-class SecondWin(QWidget)
+class SecondWin(QWidget):
     def __init__(self):
         super(). __init__()
         self set_appear()
@@ -58,10 +61,10 @@ class SecondWin(QWidget)
         self.r_line.addWidget(self.timer)
 
         self.l_line.addWidget(self.fio)
-        
-      def next_click(self):
+
+    def next_click(self):
         self.hide
-        self.exp = Experiment(int(self.line_age.text()), self.line_text1.text(), self.line_text2.text(),self.line_text3.text())
+        self.exp = Experiment(int(self.line_age.text()), self.line_test1.text(), self.line_test2.text(),self.line_test3.text())
         self.fw = final_win(self.exp)
     
     def timer_test(self):
@@ -69,7 +72,7 @@ class SecondWin(QWidget)
         time = QTime(0, 0, 15)
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer1Event)
-        self.timer.start(1500)
+        self.timer.start(1000)
 
     def timer_sits(self):
         global time
@@ -83,7 +86,7 @@ class SecondWin(QWidget)
         time = QTime(0, 1, 0)
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer3Event)
-        self.timer.start(1500)
+        self.timer.start(1000)
 
     def timer1Event(self):
         global time
@@ -123,13 +126,7 @@ class SecondWin(QWidget)
         self.button_test2.clicked.connect(self.timer_sits)
         self.button_test3.clicked.connect(self.timer_final)
 
-    def connects(self):
-        self.send_button.clicked.connect(self.next_click)
 
-
-    def next_click(self):
-        self.hide()
-        self.fw = final_win()
 
 app = QApplication([])
 sw = second_win()
